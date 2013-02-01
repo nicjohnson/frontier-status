@@ -90,4 +90,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/auth/github');
 }
 
-// app.listen(3000);
+if ('production' == process.env.NODE_ENV) {
+  app.listen(3000);
+}
