@@ -9,10 +9,19 @@ var express = require('express')
   , passport = require('passport')
   , util = require('util')
   , GitHubStrategy = require('passport-github').Strategy
-  , path = require('path');
+  , path = require('path')
+  , nconf = require('nconf');
 
-var GITHUB_CLIENT_ID = "5a821c5ca41b1a27d65b";
-var GITHUB_CLIENT_SECRET = "0902b4d912625069bbcb33f3e49eee295d480951";
+
+// console.log(process.env.NODE_ENV);
+nconf.argv()
+   .env()
+   .file({ file:
+     process.env.NODE_ENV + '.json'
+   });
+
+var GITHUB_CLIENT_ID = nconf.get('GITHUB_CLIENT_ID');
+var GITHUB_CLIENT_SECRET = nconf.get('GITHUB_CLIENT_SECRET');
 
 passport.serializeUser(function(user, done) {
   done(null, user);
