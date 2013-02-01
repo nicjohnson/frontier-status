@@ -91,5 +91,5 @@ function ensureAuthenticated(req, res, next) {
 }
 
 if ('production' == process.env.NODE_ENV) {
-  app.listen(3000);
+  app.listen(app.get('port'));
 }
