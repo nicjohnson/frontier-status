@@ -1,0 +1,14 @@
+node_modules
+target
+.DS_Store
+builtAssets
+.s3creds
+.monitor
+*.esproj
+.idea
+*.iml
+*.ipr
+*.iws
+npm-debug.log
+.env
+Procfiledev
