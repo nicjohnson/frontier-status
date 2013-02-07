@@ -10,18 +10,7 @@ var express = require('express')
   , util = require('util')
   , GitHubStrategy = require('passport-github').Strategy
   , path = require('path')
-  , nconf = require('nconf');
 
-
-console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV);
-nconf.argv()
-   .env()
-   .file({ file:
-     process.env.NODE_ENV + '.json'
-   });
-
-var GITHUB_CLIENT_ID = nconf.get('GITHUB_CLIENT_ID');
-var GITHUB_CLIENT_SECRET = nconf.get('GITHUB_CLIENT_SECRET');
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -32,8 +21,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GitHubStrategy({
-    clientID: GITHUB_CLIENT_ID,
-    clientSecret: GITHUB_CLIENT_SECRET,
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: "http://localhost:5000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -90,6 +79,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/auth/github');
 }
 
-if ('production' == process.env.NODE_ENV) {
-  app.listen(app.get('port'));
-}
+// if ('production' == process.env.NODE_ENV) {
+//   app.listen(app.get('port'));
+// }
