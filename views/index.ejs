@@ -5,7 +5,12 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1></h1>
-    <p>Welcome, <%= user.displayName %>. <a href="/logout">Logout</a></p>
+    <h1>Frontier Status</h1>
+    <% if (!user) { %>
+      <h2>Welcome! Please <a href="/login">log in</a>.</h2>
+    <% } else { %>
+      <h2>Hello, <%= user.profile.displayName %>. <a href="/logout">Log out</a>.</h2>
+    <% } %>
+
   </body>
 </html>

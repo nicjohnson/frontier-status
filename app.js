@@ -6,10 +6,10 @@
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
-  , passport = require('passport')
   , util = require('util')
+  , passport = require('passport')
   , GitHubStrategy = require('passport-github').Strategy
-  , path = require('path')
+  , path = require('path');
 
 
 passport.serializeUser(function(user, done) {
@@ -19,7 +19,8 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
-
+    // clientID: '5a821c5ca41b1a27d65b',
+    // clientSecret: '0902b4d912625069bbcb33f3e49eee295d480951',
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -35,7 +36,7 @@ passport.use(new GitHubStrategy({
 var app = module.exports = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 5000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.favicon());
@@ -47,7 +48,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express['static'](path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -64,10 +65,14 @@ app.get('/auth/github',
   });
 
 app.get('/auth/github/callback', 
-  passport.authenticate('github', { failureRedirect: '/login' }),
+  passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
+
+app.get('/login', ensureAuthenticated, function(req, res){
+  // res.redirect('/');
+});
 
 app.get('/logout', function(req, res){
   req.logout();
@@ -79,6 +84,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/auth/github');
 }
 
-// if ('production' == process.env.NODE_ENV) {
-//   app.listen(app.get('port'));
-// }
+if(!process.env.STARTUP) {
+  app.listen(app.get('port'));
+}
