@@ -9,6 +9,7 @@ var express = require('express')
   , util = require('util')
   , passport = require('passport')
   , GitHubStrategy = require('passport-github').Strategy
+  , proxy = require('simple-http-proxy')
   , path = require('path');
 
 
@@ -50,6 +51,8 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
+  app.use("/api", proxy("https://familysearch.org/artifactmanager"));
+  // app.use("/api", proxy("https://api.github.com"));
 });
 
 app.configure('development', function(){
