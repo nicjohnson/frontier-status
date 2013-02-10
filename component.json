@@ -1,0 +1,10 @@
+{
+  "name": "frontier-status",
+  "dependencies": {
+    "visionmedia/superagent": "*"
+  },
+  "scripts": [
+    "public/javascripts/client.js"
+  ],
+  "main": "public/javascripts/client.js"
+}

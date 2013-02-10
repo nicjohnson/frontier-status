@@ -40,6 +40,8 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.favicon());
+  app.use(express['static'](path.join(__dirname, 'public')));
+  app.use(express['static'](path.join(__dirname, 'build')));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -48,17 +50,16 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use(express['static'](path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', ensureAuthenticated, routes.index);
+app.get('/', routes.index);
 
 app.get('/auth/github',
-  passport.authenticate('github'),
+  passport.authenticate('github', { scope: 'repo' }),
   function(req, res){
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.

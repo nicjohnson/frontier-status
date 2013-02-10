@@ -11,4 +11,5 @@ builtAssets
 *.iws
 npm-debug.log
 .env
-Procfiledev
+build
+components
