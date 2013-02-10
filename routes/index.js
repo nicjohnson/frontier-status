@@ -21,7 +21,7 @@ exports.index = function(req, res){
 
   if (req.isAuthenticated()) {
     // getData('https://api.github.com/orgs/fs-webdev/teams', req, res);
-    getData('/api/teams/214925', req, res);
+    getData('/github-api/teams/214925', req, res);
     // getData('https://api.github.com/users/nicjohnson', req, res);
     // getData('https://api.github.com/repos/fs-webdev/home/contents/package.json', req, res);
   } else {

@@ -51,7 +51,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use("/api", proxy("https://familysearch.org/artifactmanager"));
+  app.use("/github-api", proxy("https://api.github.com"));
   // app.use("/api", proxy("https://api.github.com"));
 });
 
