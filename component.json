@@ -4,7 +4,8 @@
     "visionmedia/superagent": "*",
     "jb55/domready": "*",
     "component/cookie": "*",
-    "component/json-fallback": "*"
+    "component/json-fallback": "*",
+    "component/json": "*"
   },
   "scripts": [
     "public/javascripts/client.js"

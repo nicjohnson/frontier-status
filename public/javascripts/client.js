@@ -1,6 +1,7 @@
 var superagent = require('superagent');
 var domready = require('domready');
 var cookie = require('cookie');
+var json = require('json');
 
 var accessToken = cookie('accessToken');
 var org = '';
@@ -37,7 +38,7 @@ function getPackageContents (repoName, org) {
         if (data.ok) {
           var repo = {};
           try {
-            repo = JSON.parse(data.text);
+            repo = json.parse(data.text);
           } catch(ex) {
             console.log('ex:', ex);
           }
