@@ -3,7 +3,8 @@
   "dependencies": {
     "visionmedia/superagent": "*",
     "jb55/domready": "*",
-    "component/cookie": "*"
+    "component/cookie": "*",
+    "component/json-fallback": "*"
   },
   "scripts": [
     "public/javascripts/client.js"
