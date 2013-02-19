@@ -1,7 +1,9 @@
 {
   "name": "frontier-status",
   "dependencies": {
-    "visionmedia/superagent": "*"
+    "visionmedia/superagent": "*",
+    "jb55/domready": "*",
+    "component/cookie": "*"
   },
   "scripts": [
     "public/javascripts/client.js"

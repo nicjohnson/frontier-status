@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , githubapi = require('./routes/github-api')
   , http = require('http')
   , util = require('util')
   , passport = require('passport')
@@ -51,7 +52,13 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use("/github-api", proxy("https://api.github.com"));
+  // app.use("/github-api", function (req, res, next) {
+  //   if (req.isAuthenticated()) {
+  //     req.headers["authorization"] = "Bearer " + req.user.accessToken;
+  //   }
+  //   next(); 
+  // });
+  // app.use("/github-api", proxy("https://api.github.com"));
   // app.use("/api", proxy("https://api.github.com"));
 });
 
@@ -60,6 +67,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+// app.get('/github-api/repos', githubapi.repos);
 
 app.get('/auth/github',
   passport.authenticate('github', { scope: 'repo' }),
@@ -80,6 +88,7 @@ app.get('/login', ensureAuthenticated, function(req, res){
 
 app.get('/logout', function(req, res){
   req.logout();
+  res.clearCookie('accessToken');
   res.redirect('/');
 });
 

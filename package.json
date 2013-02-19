@@ -13,7 +13,7 @@
     "postinstall": "component build --standalone frontier-status"
   },
   "dependencies": {
-    "express": "3.0.6",
+    "express": "3.0.x",
     "ejs": "*",
     "superagent": "~0.12.1",
     "passport-github": "~0.1.3",

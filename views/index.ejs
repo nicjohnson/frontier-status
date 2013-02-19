@@ -9,11 +9,9 @@
     <% if (!user) { %>
       <h2>Welcome! Please <a href="/login">log in</a>.</h2>
     <% } else { %>
-      <h2>Hello, <a href="<%= myoutput.html_url %>"><%= user.profile.displayName %></a>. <a href="/logout">Log out</a>.</h2>
-      <% if (myoutput) { %>
-        <p><%= myoutput %></p>
-      <% } %>
+      <h2>Hello, <%= user.profile.displayName %>. <a href="/logout">Log out</a>.</h2>
     <% } %>
+    <ul id="repos"></ul>
     <script src="/build.js"></script>
   </body>
 </html>
