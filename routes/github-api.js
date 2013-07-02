@@ -3,6 +3,7 @@ function sendData (url, req, res) {
     // superagent.get('https://api.github.com/repos/fs-webdev/home/readme')
     // superagent.get('https://api.github.com/repos/fs-webdev/home/contents/package.json')
     .set('Accept', 'application/vnd.github.raw+json')
+    .set('User-Agent', 'nicjohnson')
     .auth(req.user.accessToken, 'x-oauth-basic')
     .end(function(data) {
       if(data.ok) {
