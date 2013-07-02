@@ -2,7 +2,13 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+}
+table td {
+  padding: 1em 3px;
+}
+.name {
+  font-weight: bold;
+  text-align: right;
 }
