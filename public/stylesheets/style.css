@@ -1,12 +1,30 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #444;
 }
 a {
   color: #00B7FF;
 }
-table td {
-  padding: 1em 3px;
+table {
+  margin-top: 4em;
+}
+td, th {
+  padding: 1em;
+  /*border-left: 1px solid #eee;*/
+}
+#name {
+  background: #eee;
+}
+th {
+  background: #222;
+  color: #fff;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+  background-color: #fff;
 }
 .name {
   font-weight: bold;

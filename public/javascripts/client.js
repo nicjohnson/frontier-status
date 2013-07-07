@@ -46,12 +46,15 @@ function getPackageContents (repoName, org) {
           if (repo.dependencies && repo.dependencies !== null && typeof repo.dependencies['shared-ui'] !== 'undefined') {
             var tr = document.createElement('tr');
             var nameTr = document.createElement('td');
-            var repoTr = document.createElement('td');
+            var SUITr = document.createElement('td');
+            var WoodruffTr = document.createElement('td');
             nameTr.appendChild(document.createTextNode(repo.name));
             nameTr.className = 'name';
-            repoTr.appendChild(document.createTextNode(repo.dependencies['shared-ui']));
+            SUITr.appendChild(document.createTextNode(repo.dependencies['shared-ui']));
+            WoodruffTr.appendChild(document.createTextNode(repo.dependencies['woodruff']));
             tr.appendChild(nameTr);
-            tr.appendChild(repoTr);
+            tr.appendChild(SUITr);
+            tr.appendChild(WoodruffTr);
             repoList.appendChild(tr);
           }
 
