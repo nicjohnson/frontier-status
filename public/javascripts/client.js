@@ -43,8 +43,8 @@ function getPackageContents (repoName, org) {
             console.log('ex:', ex);
           }
 
-          // if (repo.dependencies && repo.dependencies !== null && typeof repo.dependencies['shared-ui'] !== 'undefined') {
-          if (repo.dependencies && repo.dependencies !== null) {
+          if (repo.dependencies && repo.dependencies !== null && typeof repo.dependencies['woodruff'] !== 'undefined') {
+          // if (repo.dependencies && repo.dependencies !== null) {
             var tr = document.createElement('tr');
             var nameTr = document.createElement('td');
             var SUITr = document.createElement('td');
